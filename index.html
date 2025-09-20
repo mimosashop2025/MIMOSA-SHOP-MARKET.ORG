@@ -1,236 +1,214 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mimosa Shop Market</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #000, #222);
-      color: white;
-      overflow-x: hidden;
-    }
-    header {
-      background: gold;
-      color: black;
-      text-align: center;
-      padding: 20px;
-      font-size: 28px;
-      font-weight: bold;
-      box-shadow: 0 0 20px gold;
-    }
-    .container {
-      display: flex;
-    }
-    nav {
-      width: 220px;
-      background: #111;
-      min-height: 100vh;
-      padding: 20px;
-      box-shadow: 0 0 15px #444;
-    }
-    nav h2 {
-      color: gold;
-      text-align: center;
-    }
-    nav ul {
-      list-style: none;
-      padding: 0;
-    }
-    nav ul li {
-      margin: 15px 0;
-    }
-    nav ul li a {
-      text-decoration: none;
-      color: white;
-      font-size: 18px;
-      transition: 0.3s;
-    }
-    nav ul li a:hover {
-      color: gold;
-      text-shadow: 0 0 10px gold;
-    }
-    main {
-      flex: 1;
-      padding: 20px;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
-    }
-    .product {
-      background: #222;
-      border-radius: 12px;
-      padding: 15px;
-      text-align: center;
-      box-shadow: 0 0 15px rgba(255,215,0,0.3);
-      transition: transform 0.3s;
-    }
-    .product:hover {
-      transform: scale(1.05);
-    }
-    .product img {
-      max-width: 100%;
-      border-radius: 10px;
-    }
-    .product h3 {
-      margin: 10px 0;
-      color: gold;
-    }
-    .btn {
-      background: gold;
-      color: black;
-      padding: 10px 15px;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: bold;
-      transition: 0.3s;
-    }
-    .btn:hover {
-      background: white;
-      color: gold;
-      box-shadow: 0 0 15px gold;
-    }
-    #cart {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: gold;
-      color: black;
-      padding: 15px;
-      border-radius: 12px;
-      font-weight: bold;
-      cursor: pointer;
-      box-shadow: 0 0 20px gold;
-    }
-    /* Admin Login */
-    #admin-login {
-      display: none;
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0,0,0,0.9);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      color: white;
-    }
-    #admin-login input {
-      margin: 10px;
-      padding: 10px;
-      border-radius: 8px;
-      border: none;
-    }
-    #admin-login button {
-      margin-top: 10px;
-    }
-    .emoji {
-      font-size: 60px;
-      animation: bounce 1.5s infinite;
-    }
-    @keyframes bounce {
-      0%,100% { transform: translateY(0);}
-      50% { transform: translateY(-15px);}
-    }
-    /* Admin Dashboard */
-    #admin-dashboard {
-      display: none;
-      padding: 20px;
-    }
-    #admin-dashboard h2 {
-      color: gold;
-    }
-    footer {
-      text-align: center;
-      padding: 15px;
-      background: #111;
-      box-shadow: 0 -2px 10px #444;
-    }
-  </style>
+<meta charset="UTF-8">
+<title>MimosaShop MARKET | RESPECT REZ.ORG</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body{margin:0;font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:#0a0a0f;color:#f5f5f5;line-height:1.6;overflow-x:hidden;}
+header{text-align:center;padding:60px 20px 30px;position:relative;overflow:hidden;background:#0a0a0f;}
+header h1{font-size:3em;font-weight:bold;color:#00ffe5;text-shadow:0 0 10px #00ffe5,0 0 20px #0077ff,0 0 40px #00ffe5;animation:glow 3s infinite alternate;}
+header h1 span{color:#fff;text-shadow:0 0 10px #fff,0 0 20px #00ffe5;}
+@keyframes glow{from{text-shadow:0 0 5px #00ffe5,0 0 10px #0077ff;}to{text-shadow:0 0 20px #00ffe5,0 0 40px #0077ff,0 0 60px #00ffe5;}}
+header::after{content:"";position:absolute;top:-100%;left:0;width:100%;height:200%;background:linear-gradient(to bottom, transparent 45%, rgba(0,255,229,0.2) 50%, transparent 55%);animation:scan 5s linear infinite;}
+@keyframes scan{from{top:-100%;}to{top:100%;}}
+nav{background:#111;padding:10px;text-align:center;position:sticky;top:0;z-index:1000;}
+nav a{color:#00ffe5;margin:0 15px;text-decoration:none;font-weight:bold;transition:0.3s;}
+nav a:hover{text-shadow:0 0 8px #00ffe5;color:#fff;}
+section{padding:40px 20px;max-width:1000px;margin:auto;}
+h2{color:#00ffe5;border-bottom:2px solid #00ffe5;display:inline-block;margin-bottom:20px;}
+.info-box{background:#15151a;padding:20px;border-radius:10px;margin-bottom:20px;box-shadow:0 0 15px rgba(0,255,229,0.3);}
+ul li{margin:8px 0;}
+table{width:100%;border-collapse:collapse;background:#15151a;margin-top:20px;border-radius:10px;overflow:hidden;}
+table th, table td{padding:15px;border:1px solid #333;text-align:center;}
+table th{background:#00ffe5;color:#0a0a0f;}
+footer{background:#111;text-align:center;padding:15px;font-size:0.9em;margin-top:30px;color:#999;}
+.highlight{color:#00ffe5;font-weight:bold;}
+button{padding:8px 15px;margin:5px;background:#00ffe5;border:none;color:#0a0a0f;font-weight:bold;border-radius:5px;cursor:pointer;}
+input, select{padding:7px;margin:5px;border-radius:5px;border:1px solid #333;background:#15151a;color:#fff;}
+#admin-actions{margin-top:20px;}
+#admin-login{margin-bottom:20px;}
+</style>
 </head>
 <body>
-  <header>Mimosa Shop Market ✨</header>
-  <div class="container">
-    <nav>
-      <h2>Categories</h2>
-      <ul>
-        <li><a href="#">Pants</a></li>
-        <li><a href="#">T-Shirts</a></li>
-        <li><a href="#">Shoes</a></li>
-        <li><a href="#">Jackets</a></li>
-        <li><a href="#" onclick="openAdmin()">👑 Admin</a></li>
-      </ul>
-    </nav>
-    <main>
-      <div class="product">
-        <img src="https://via.placeholder.com/200" alt="Pants">
-        <h3>Golden Pants</h3>
-        <p>$49.99</p>
-        <button class="btn" onclick="addToCart('Golden Pants')">Add to Cart</button>
-      </div>
-      <div class="product">
-        <img src="https://via.placeholder.com/200" alt="T-Shirt">
-        <h3>Luxury T-Shirt</h3>
-        <p>$29.99</p>
-        <button class="btn" onclick="addToCart('Luxury T-Shirt')">Add to Cart</button>
-      </div>
-    </main>
-  </div>
-  
-  <div id="cart" onclick="viewCart()">🛒 Cart (<span id="cart-count">0</span>)</div>
 
-  <!-- Admin Login -->
-  <div id="admin-login">
-    <div class="emoji">👑</div>
-    <h2>Admin Login</h2>
-    <input type="text" id="admin-user" placeholder="Username">
-    <input type="password" id="admin-pass" placeholder="Password">
-    <button class="btn" onclick="loginAdmin()">Login</button>
-    <button class="btn" onclick="closeAdmin()">Close</button>
-  </div>
+<header>
+<h1><span>RESPECT</span> REZ.ORG</h1>
+</header>
 
-  <!-- Admin Dashboard -->
-  <div id="admin-dashboard">
-    <h2>Admin Dashboard</h2>
-    <p>📦 Manage Products</p>
-    <p>📝 View Orders</p>
-    <button class="btn" onclick="logoutAdmin()">Logout</button>
-  </div>
+<nav>
+<a href="#about">About</a>
+<a href="#projects">Projects</a>
+<a href="#staff">Staff</a>
+<a href="#finance">Finance</a>
+<a href="#updates">Updates</a>
+<a href="#admin-panel">Admin</a>
+</nav>
 
-  <footer>© 2025 Mimosa Shop Market | All Rights Reserved</footer>
+<section id="about">
+<h2>About Us</h2>
+<div class="info-box">
+<p>RESPECT REZ.ORG is a leading gaming & cyber security society founded by passionate developers and innovators.</p>
+<p><span class="highlight">Owner:</span> Wael.REZ <br>
+<span class="highlight">Co-Owner:</span> Samy.REZ <br>
+<span class="highlight">Founded:</span> 2024</p>
+</div>
+</section>
 
-  <script>
-    let cart = [];
-    function addToCart(item) {
-      cart.push(item);
-      document.getElementById("cart-count").innerText = cart.length;
-      alert(item + " added to cart!");
+<section id="projects">
+<h2>Our Projects</h2>
+<div class="info-box">
+<ul>
+<li><b>REZ Security App</b> – Detects malicious payloads in real time.</li>
+<li><b>REZ Gaming Hub</b> – Multiplayer gaming platform with cyberpunk design.</li>
+<li><b>SecureCloud</b> – Cloud encrypted file sharing platform.</li>
+<li><b>AI Shield</b> – AI system for proactive threat detection.</li>
+<li><b>MimosaShop MARKET</b> – Professional online shop for gaming & cyber products.</li>
+</ul>
+</div>
+</section>
+
+<section id="staff">
+<h2>Staff & Team</h2>
+<div class="info-box">
+<p>Growing international team:</p>
+<ul>
+<li>Admins & Developers: 120+</li>
+<li>Moderators & Support: 300+</li>
+<li>Community Members: 15,000+</li>
+</ul>
+</div>
+</section>
+
+<section id="finance">
+<h2>Finance & Growth</h2>
+<div class="info-box">
+<p>Between 2024 and 2025, our projects generated over <span class="highlight">$39,520</span> in revenue and supported a thriving global community.</p>
+<canvas id="statsChart"></canvas>
+</div>
+</section>
+
+<section id="updates">
+<h2>Latest Updates</h2>
+<div class="info-box">
+<p>⚡ The market and cyber security landscape evolves fast. Admin updates ongoing. Some commands remain locked. Stay tuned for new features.</p>
+</div>
+</section>
+
+<section id="admin-panel">
+<h2>Admin Panel</h2>
+<div class="info-box" id="admin-login">
+<input type="text" id="adminUser" placeholder="Username">
+<input type="password" id="adminPass" placeholder="Password">
+<button onclick="adminLogin()">Login</button>
+<p id="loginMsg"></p>
+</div>
+
+<div class="info-box" id="admin-actions" style="display:none;">
+<h3>Order Dashboard</h3>
+<p>New orders appear here automatically.</p>
+<div id="clients-panel">
+<h3>Clients / Members</h3>
+<table id="clients-table">
+<thead><tr><th>Name</th><th>Phone</th><th>Address</th><th>Total Orders</th><th>Products Ordered</th></tr></thead>
+<tbody></tbody>
+</table>
+</div>
+</div>
+</section>
+
+<footer>
+© 2024–2025 RESPECT REZ.ORG — All Rights Reserved.
+</footer>
+
+<!-- Firebase & EmailJS -->
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+// Firebase config
+const firebaseConfig = {
+  apiKey: "YOUR_API_KEY",
+  authDomain: "YOUR_PROJECT.firebaseapp.com",
+  databaseURL: "https://YOUR_PROJECT.firebaseio.com",
+  projectId: "YOUR_PROJECT",
+  storageBucket: "YOUR_PROJECT.appspot.com",
+  messagingSenderId: "YOUR_SENDER_ID",
+  appId: "YOUR_APP_ID"
+};
+firebase.initializeApp(firebaseConfig);
+
+// Admin login
+function adminLogin(){
+  const user=document.getElementById('adminUser').value;
+  const pass=document.getElementById('adminPass').value;
+  if(user==="ADMIN" && pass==="DEVWAEL2011"){
+    document.getElementById('admin-actions').style.display='block';
+    document.getElementById('admin-login').style.display='none';
+    updateStats();
+    updateClients();
+  } else document.getElementById('loginMsg').textContent="Wrong credentials!";
+}
+
+// Send Email notification
+emailjs.init("YOUR_EMAILJS_USERID");
+function sendEmailNotification(order){
+  emailjs.send("YOUR_SERVICE_ID","YOUR_TEMPLATE_ID",{
+    buyer_name: order.name,
+    buyer_phone: order.phone,
+    buyer_address: order.address,
+    product_name: order.product,
+    product_price: order.price
+  }).then(res=>console.log("Email sent!", res.status),err=>console.error(err));
+}
+
+// Orders realtime
+firebase.database().ref('orders').on('child_added', snapshot=>{
+  const order = snapshot.val();
+  sendEmailNotification(order);
+  updateStats();
+  updateClients();
+});
+
+// Dashboard stats
+function updateStats(){
+  firebase.database().ref('orders').once('value', snapshot=>{
+    const ordersData = snapshot.val()?Object.values(snapshot.val()):[];
+    const productCount = {};
+    let totalRevenue = 0;
+    ordersData.forEach(o=>{
+      productCount[o.product] = (productCount[o.product]||0)+1;
+      totalRevenue += parseFloat(o.price);
+    });
+    const ctx = document.getElementById('statsChart').getContext('2d');
+    if(window.myChart) window.myChart.destroy();
+    window.myChart=new Chart(ctx,{type:'bar',data:{labels:Object.keys(productCount),datasets:[{label:'Number of Orders',data:Object.values(productCount),backgroundColor:'rgba(0,255,255,0.5)',borderColor:'rgba(0,255,255,1)',borderWidth:1}]},options:{scales:{y:{beginAtZero:true}},plugins:{title:{display:true,text:'Orders per Product | Total Revenue: $'+totalRevenue}}}});
+  });
+}
+
+// Clients table
+function updateClients(){
+  const tbody = document.querySelector("#clients-table tbody");
+  tbody.innerHTML='';
+  firebase.database().ref('orders').once('value',snapshot=>{
+    const ordersData = snapshot.val()?Object.values(snapshot.val()):[];
+    const clients={};
+    ordersData.forEach(o=>{
+      if(!clients[o.name]) clients[o.name]={phone:o.phone,address:o.address,total:0,products:[]};
+      clients[o.name].total+=1;
+      clients[o.name].products.push(o.product);
+    });
+    for(const name in clients){
+      const c=clients[name];
+      const tr=document.createElement('tr');
+      tr.innerHTML=`<td>${name}</td><td>${c.phone}</td><td>${c.address}</td><td>${c.total}</td><td>${c.products.join(", ")}</td>`;
+      tbody.appendChild(tr);
     }
-    function viewCart() {
-      alert("Your Cart:\n" + cart.join("\n"));
-    }
-    function openAdmin() {
-      document.getElementById("admin-login").style.display = "flex";
-    }
-    function closeAdmin() {
-      document.getElementById("admin-login").style.display = "none";
-    }
-    function loginAdmin() {
-      let user = document.getElementById("admin-user").value;
-      let pass = document.getElementById("admin-pass").value;
-      if(user === "admin" && pass === "1234") {
-        document.getElementById("admin-login").style.display = "none";
-        document.getElementById("admin-dashboard").style.display = "block";
-      } else {
-        alert("Wrong credentials!");
-      }
-    }
-    function logoutAdmin() {
-      document.getElementById("admin-dashboard").style.display = "none";
-    }
-  </script>
+  });
+}
+</script>
+
 </body>
 </html>
